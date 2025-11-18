@@ -1,0 +1,19 @@
+<aside class="comments-sidebar">
+  <h3>Comments</h3>
+  <ng-container *ngIf="comments$ | async as comments; else noComments">
+    <div class="comment-list">
+      <div class="comment" *ngFor="let c of comments">
+        <div class="meta">
+          <span class="author">{{ c.author }}</span>
+          <span class="date">{{ c.createdAt | date: 'shortTime' }}</span>
+        </div>
+        <p class="excerpt">“{{ c.excerpt || '...' }}”</p>
+        <p class="text">{{ c.text }}</p>
+      </div>
+    </div>
+  </ng-container>
+  
+  <ng-template #noComments>
+    <p>No comments yet.</p>
+  </ng-template>
+</aside>

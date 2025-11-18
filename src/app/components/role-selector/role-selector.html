@@ -1,0 +1,8 @@
+<label>
+  Role:
+  <select [ngModel]="(role$ | async)!" (ngModelChange)="onRoleChange($event)">
+    <option value="editor">Editor</option>
+    <option value="reviewer">Reviewer</option>
+    <option value="viewer">Viewer</option>
+  </select>
+</label>

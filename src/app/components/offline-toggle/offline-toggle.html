@@ -1,0 +1,8 @@
+<label>
+  <input
+    type="checkbox"
+    [checked]="(isOffline$ | async)!"
+    (change)="toggleOffline($event)"
+  />
+  Offline mode
+</label>

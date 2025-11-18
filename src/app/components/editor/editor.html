@@ -1,0 +1,48 @@
+<div class="editor-container" *ngIf="vm$ | async as vm">
+  <div class="editor-header">
+    <span>Document</span>
+
+    <button
+      type="button"
+      class="comment-btn"
+      [disabled]="!canAddComment(vm.role)"
+      (click)="addComment(vm.role)">
+      Add comment on selection
+    </button>
+  </div>
+
+  <div class="editor-wrapper">
+
+    <div
+      #editor
+      class="editor-area"
+      [attr.contenteditable]="vm.role === 'editor' ? 'true' : 'false'"
+      [innerHTML]="vm.text"
+      (input)="onInput($event, vm.role)"
+      (mouseup)="onSelect()"
+      (keyup)="onSelect()"
+      (select)="onSelect()"
+    ></div>
+
+    <ng-container *ngFor="let c of collaborators$ | async">
+      <div *ngIf="c.cursorIndex !== null"
+        class="cursor"
+        [style.left.px]="cursorPositions[c.id]?.left"
+        [style.top.px]="cursorPositions[c.id]?.top"
+        [style.borderColor]="c.color">
+
+        <span class="cursor-avatar" [style.background]="c.color">
+          {{ c.avatarInitials }}
+        </span>
+      </div>
+    </ng-container>
+
+  </div>
+
+  <div class="role-hint" *ngIf="vm.role === 'viewer'">
+    Viewer role: read-only. You cannot edit or comment.
+  </div>
+  <div class="role-hint" *ngIf="vm.role === 'reviewer'">
+    Reviewer role: you can add comments but cannot modify the document text.
+  </div>
+</div>

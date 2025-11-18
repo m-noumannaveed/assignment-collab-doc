@@ -1,0 +1,44 @@
+.comments-sidebar {
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  margin: 0 0 8px;
+}
+
+.comment-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment {
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  font-size: 13px;
+  background: #f9fafb;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.excerpt {
+  font-style: italic;
+  color: #374151;
+  margin: 0 0 4px;
+}
+
+.text {
+  margin: 0;
+}

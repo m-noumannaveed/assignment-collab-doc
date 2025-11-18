@@ -1,0 +1,8 @@
+<div class="presence-bar">
+  <div class="presence" *ngFor="let c of (collaborators$ | async)!">
+    <div class="avatar" [ngStyle]="{ 'background-color': c.color }">
+      {{ c.avatarInitials }}
+    </div>
+    <span class="name">{{ c.name }}</span>
+  </div>
+</div>
